@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <title>CHART</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ANALISA PENJUALAN DI TAHUN 2022</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <div class="container">
+        <h1 class="my-4">Data Penjualan</h1>
+        <div class="row">
+          <div class="col-md-8">
+            <canvas id="myChart"></canvas>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                Informasi
+              </div>
+              <div class="card-body">
+                <p class="card-text">Kami dengan bangga mengumumkan bahwa penjualan kami telah menunjukkan stabilitas yang signifikan selama beberapa bulan terakhir. Dalam kondisi pasar yang sangat berubah-ubah dan tidak menentu, kami berhasil mempertahankan kinerja penjualan yang solid dan konsisten. Hal ini merupakan hasil dari strategi bisnis kami yang berfokus pada kepuasan pelanggan dan pengiriman produk yang berkualitas tinggi. Kami percaya bahwa stabilitas penjualan kami akan terus berlanjut dan bahkan meningkat di masa depan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <canvas id="myPieChart"></canvas>
+          </div>
+        </div>
+      </div>
+    <script>
+        // Ambil data dari tabel
+        var dataX = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Juli", "agustus", "september", "oktober", "november", "desember"];
+        var dataY = [25, 45, 60, 30, 70, 50,25, 45, 60, 30, 70, 50,25, 45, 60, 30, 70, 50];
+      
+        // Buat chart line dengan animasi
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: dataX,
+            datasets: [{
+              label: 'Penjualan',
+              data: dataY,
+              backgroundColor: 'rgba(0, 119, 204, 0.3)',
+              borderColor: 'rgba(0, 119, 204, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            },
+            animation: {
+              duration: 2000, // durasi animasi dalam milidetik
+              easing: 'easeOutBounce' // jenis animasi
+            }
+          }
+        });
+      </script>
+      <br>
+      <script>
+        // Ambil data dari tabel
+        var dataX = ["Makanan", "Minuman", "Pakaian", "Elektronik", "kosmetik"];
+        var dataY = [30, 20, 10, 25, 15];
+      
+        // Buat pie chart
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: dataX,
+            datasets: [{
+              label: 'Penjualan',
+              data: dataY,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            legend: {
+              position: 'bottom'
+            },
+            animation: {
+              duration: 2000,
+              easing: 'easeOutBounce'
+            }
+          }
+        });
+      </script>
+      
+</body>
+</html>
